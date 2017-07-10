@@ -109,6 +109,19 @@ app.post('/api/banks', function(req, res){
 	});
 });
 
+// Put Bank -Update
+app.put('/api/banks/:_id', function(req, res){
+	var id = req.params._id;
+	var bank = req.body;
+
+	Bank.updateBank(id, bank, {}, function(err, bank){
+		if (err){
+			throw err;
+		}
+		res.json(bank);
+
+	});
+});
 // Get Accounts
 app.get('/api/accounts', function(req, res){
 	Account.getAccounts(function(err, accounts){

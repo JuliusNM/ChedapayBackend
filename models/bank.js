@@ -26,3 +26,13 @@ module.exports.getBanks = function(callback, limit){
 module.exports.addBank = function(bank, callback){
 	Bank.create(bank, callback);
 }
+
+//Update Bank
+module.exports.updateBank = function(id, bank, options, callback){
+	var query = { _id: id };
+	var update = {
+		BankName : bank.BankName,
+		BankCode : bank.BankCode
+	}
+	Bank.findOneAndUpdate(query, update, options, callback);
+}
