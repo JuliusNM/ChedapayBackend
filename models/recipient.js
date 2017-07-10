@@ -32,3 +32,8 @@ var Recipient = module.exports = mongoose.model('Recipient', recipientSchema);
 module.exports.getRecipients = function(callback, limit){
 	Recipient.find(callback).limit(limit);
 }
+
+//Add Recipient
+module.exports.addRecipient = function(recipient, callback){
+	Recipient.create(recipient, callback);
+}
