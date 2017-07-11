@@ -36,3 +36,9 @@ module.exports.updateBank = function(id, bank, options, callback){
 	}
 	Bank.findOneAndUpdate(query, update, options, callback);
 }
+//Delete Bank
+module.exports.findOneAndDelete = function(id, callback){
+
+	var query = { _id: id };
+	Bank.findOneAndRemove(query, callback);
+}

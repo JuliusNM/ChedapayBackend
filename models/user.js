@@ -40,3 +40,15 @@ module.exports.getUsers = function(callback, limit){
 module.exports.addUser = function(user, callback){
 	User.create(user, callback);
 }
+
+//Update User
+module.exports.updateUser = function(id, user, options, callback){
+	var query = { _id: id };
+	var update = {
+		FirstName : user.FirstName,
+		LastName : user.LastName,
+		PhoneNumber : user.PhoneNumber,
+		EmailAddress : user.EmailAddress
+	}
+	User.findOneAndUpdate(query, update, options, callback);
+}

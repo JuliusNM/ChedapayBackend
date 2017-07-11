@@ -34,3 +34,21 @@ module.exports.getCards = function(callback, limit){
 module.exports.addCard = function(card, callback){
 	Card.create(card, callback);
 }
+
+//Update Card
+module.exports.updateCard = function(id, card, options, callback){
+	var query = { _id: id };
+	var update = {
+		CardNumber : card.CardNumber,
+		CVV : card.CVV,
+		ExpiryYear : card.ExpiryYear,
+		ExpiryMonth : card.ExpiryMonth
+	}
+	Card.findOneAndUpdate(query, update, options, callback);
+}
+//Delete Recipient
+module.exports.findOneAndDelete = function(id, callback){
+
+	var query = { _id: id };
+	Card.findOneAndRemove(query, callback);
+}

@@ -11,10 +11,8 @@ Card = require('./models/card');
 Bank = require('./models/bank');
 Account = require('./models/account');
 
-
 //connect to mongoose
 mongoose.connect('mongodb://localhost/chedapay');
-
 var db = mongoose.connection;
 
 app.get('/', function(req, res){
@@ -42,6 +40,34 @@ app.post('/api/recipients', function(req, res){
 
 	});
 });
+
+// Update Recipient
+app.put('/api/recipients/:_id', function(req, res){
+	var id = req.params._id;
+	var recipient = req.body;
+
+	Recipient.updateRecipient(id, recipient, {}, function(err, recipient){
+		if (err){
+			throw err;
+		}
+		res.json(recipient);
+
+	});
+});
+
+// Delete Recipient
+app.delete('/api/recipients/:_id', function(req, res){
+	var id = req.params._id;
+	// console.log(Recipient);
+	Recipient.findOneAndDelete(id, function(err, recipient){
+		if (err){
+			throw err;
+		}
+		res.json(recipient);
+
+	});
+});
+
 // Get Users
 app.get('/api/users', function(req, res){
 	User.getUsers(function(err, users){
@@ -57,6 +83,20 @@ app.get('/api/users', function(req, res){
 app.post('/api/users', function(req, res){
 	var user = req.body;
 	User.addUser(user, function(err, user){
+		if (err){
+			throw err;
+		}
+		res.json(user);
+
+	});
+});
+
+// Update User
+app.put('/api/users/:_id', function(req, res){
+	var id = req.params._id;
+	var user = req.body;
+
+	User.updateUser(id, user, {}, function(err, user){
 		if (err){
 			throw err;
 		}
@@ -87,6 +127,32 @@ app.post('/api/cards', function(req, res){
 
 	});
 });
+
+// Update Card
+app.put('/api/cards/:_id', function(req, res){
+	var id = req.params._id;
+	var card = req.body;
+
+	Card.updateCard(id, card, {}, function(err, card){
+		if (err){
+			throw err;
+		}
+		res.json(card);
+
+	});
+});
+// Delete Card
+app.delete('/api/cards/:_id', function(req, res){
+	var id = req.params._id;
+	// console.log(Recipient);
+	Card.findOneAndDelete(id, function(err, card){
+		if (err){
+			throw err;
+		}
+		res.json(card);
+
+	});
+});
 // Get Banks
 app.get('/api/banks', function(req, res){
 	Bank.getBanks(function(err, banks){
@@ -108,8 +174,7 @@ app.post('/api/banks', function(req, res){
 
 	});
 });
-
-// Put Bank -Update
+// Update bank
 app.put('/api/banks/:_id', function(req, res){
 	var id = req.params._id;
 	var bank = req.body;
@@ -122,6 +187,19 @@ app.put('/api/banks/:_id', function(req, res){
 
 	});
 });
+// Delete Bank
+app.delete('/api/banks/:_id', function(req, res){
+	var id = req.params._id;
+	// console.log(Recipient);
+	Bank.findOneAndDelete(id, function(err, bank){
+		if (err){
+			throw err;
+		}
+		res.json(bank);
+
+	});
+});
+
 // Get Accounts
 app.get('/api/accounts', function(req, res){
 	Account.getAccounts(function(err, accounts){
@@ -137,6 +215,33 @@ app.get('/api/accounts', function(req, res){
 app.post('/api/accounts', function(req, res){
 	var account = req.body;
 	Account.addAccount(account, function(err, account){
+		if (err){
+			throw err;
+		}
+		res.json(account);
+	});
+
+});
+
+// Update Account
+app.put('/api/accounts/:_id', function(req, res){
+	var id = req.params._id;
+	var account = req.body;
+
+	Account.updateAccount(id, account, {}, function(err, bank){
+		if (err){
+			throw err;
+		}
+		res.json(account);
+
+	});
+});
+
+// Delete Account
+app.delete('/api/accounts/:_id', function(req, res){
+	var id = req.params._id;
+	
+	Account.findOneAndDelete(id, function(err, account){
 		if (err){
 			throw err;
 		}
