@@ -36,7 +36,13 @@ app.post('/api/recipients', function(req, res){
 		if (err){
 			throw err;
 		}
-		res.json(recipient);
+		res.json({
+			"id": recipient._id,
+			"status": {
+				"code": 200,
+				"message": "w/e"
+			} 
+		});
 
 	});
 });
@@ -249,5 +255,5 @@ app.delete('/api/accounts/:_id', function(req, res){
 
 	});
 });
-app.listen(3000);
+app.listen(3000,"0.0.0.0");
 console.log('Running on port 3000...');
