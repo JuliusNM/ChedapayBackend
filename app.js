@@ -154,6 +154,7 @@ app.delete('/api/cards/:_id', function(req, res){
 	Card.findOneAndDelete(id, function(err, card){
 		if (err){
 			throw err;
+			console.log("We failed")
 		}
 		res.json(card);
 

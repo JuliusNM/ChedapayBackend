@@ -18,6 +18,10 @@ var cardSchema = mongoose.Schema({
 	ExpiryMonth:{
 		type: Number,
 		required: true
+	},
+	CardIssuer:{
+		type: String,
+		required: true
 	}
 	
 });
@@ -42,7 +46,8 @@ module.exports.updateCard = function(id, card, options, callback){
 		CardNumber : card.CardNumber,
 		CVV : card.CVV,
 		ExpiryYear : card.ExpiryYear,
-		ExpiryMonth : card.ExpiryMonth
+		ExpiryMonth : card.ExpiryMonth,
+		CardIssuer : card.CardIssuer
 	}
 	Card.findOneAndUpdate(query, update, options, callback);
 }
