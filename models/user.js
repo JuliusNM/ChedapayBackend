@@ -19,6 +19,10 @@ var userSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
+	PassWord:{
+		type: String,
+		required: true
+	},
 	CardId:{
 		type: String,
 		required: true
@@ -26,6 +30,10 @@ var userSchema = mongoose.Schema({
 	AccountId:{
 		type: String,
 		required: true
+	},
+	RecipientId:{
+		type: String,
+		required: false
 	}
 });
 

@@ -18,6 +18,7 @@ var db = mongoose.connection;
 app.get('/', function(req, res){
 	res.send('hello world!');
 });
+
 // Get Recipients
 app.get('/api/recipients', function(req, res){
 	Recipient.getRecipients(function(err, recipients){
