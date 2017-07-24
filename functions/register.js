@@ -19,7 +19,7 @@ exports.registerUser = (name, email, password) =>
 
 
 			Password: hash,
-			created_at: new Date()
+			Created_at: new Date()
 		});
 
 		newUser.save()

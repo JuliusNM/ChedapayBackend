@@ -1,19 +1,29 @@
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
+'use strict';
+
+const express    = require('express');        
+const app        = express();                
+const bodyParser = require('body-parser');
+const logger 	   = require('morgan');
+const router 	   = express.Router();
+const port 	   = process.env.PORT || 3000;
+
+const mongoose = require('mongoose');
+
+app.use(logger('dev'));
 
 app.use(bodyParser.json());
 
-Recipient = require('./models/recipient');
-User = require('./models/user');
-Card = require('./models/card');
-Bank = require('./models/bank');
-Account = require('./models/account');
+// Recipient = require('./models/recipient');
+// User = require('./models/user');
+// Card = require('./models/card');
+// Bank = require('./models/bank');
+// Account = require('./models/account');
 
 //connect to mongoose
-mongoose.connect('mongodb://localhost/chedapay');
-var db = mongoose.connection;
+// mongoose.connect('mongodb://localhost/chedapay');
+// var db = mongoose.connection;
+
+require('./routes')(router);
 
 app.get('/', function(req, res){
 	res.send('hello world!');

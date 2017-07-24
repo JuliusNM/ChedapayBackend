@@ -1,43 +1,27 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 //User Schema
 
-var userSchema = mongoose.Schema({
-	FirstName:{
-		type: String,
-		required: true
-	},
-	LastName:{
-		type: String,
-		required: true
-	},
-	PhoneNumber:{
-		type: String,
-		required: true
-	},
-	EmailAddress:{
-		type: String,
-		required: true
-	},
-	PassWord:{
-		type: String,
-		required: true
-	},
-	CardId:{
-		type: String,
-		required: true
-	},
-	AccountId:{
-		type: String,
-		required: true
-	},
-	RecipientId:{
-		type: String,
-		required: false
-	}
+const userSchema = mongoose.Schema({
+	
+	FirstName: String,
+	LastName: String,
+	PhoneNumber: String,	
+	EmailAddress: String,
+	PassWord:String,
+	Created_at: String,
+	temp_password	: String,
+	temp_password_time: String	
+	// CardId: String,
+	// AccountId: String,		
+	// RecipientId: String
+	
 });
 
-var User = module.exports = mongoose.model('User', userSchema);
+
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/chedapay');
+module.exports = mongoose.model('user', userSchema);
 
 //Get Users
 
