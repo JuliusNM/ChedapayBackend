@@ -7,8 +7,14 @@ const register = require('./functions/register');
 const login = require('./functions/login');
 const profile = require('./functions/profile');
 const password = require('./functions/password');
-// const config = require('./config/config.json');
+const config = require('./config/config.json');
 
+
+const Recipient = require('./models/recipient');
+const User = require('./models/user');
+const Card = require('./models/card');
+const Bank = require('./models/bank');
+const Account = require('./models/account');
 module.exports = router => {
 
 	router.get('/', (req, res) => res.end('Counting Cheddar!'));
@@ -23,17 +29,23 @@ module.exports = router => {
 
 		} else {
 
+			console.log("Attempting to login user...");
 			login.loginUser(credentials.name, credentials.pass)
 
 			.then(result => {
+				console.log("success??");
 
 				const token = jwt.sign(result, config.secret, { expiresIn: 1440 });
+				console.log("created token?? " + token);
 
 				res.status(result.status).json({ message: result.message, token: token });
+				console.log("sent message with " + result.message);
 
 			})
 
-			.catch(err => res.status(err.status).json({ message: err.message }));
+			.catch(err => {
+				console.log("failure");
+				res.status(err.status).json({ message: err.message })});
 		}
 	});
 
@@ -43,23 +55,30 @@ module.exports = router => {
 		const LastName = req.body.LastName;
 		const PhoneNumber = req.body.PhoneNumber;
 		const EmailAddress = req.body.EmailAddress;
-		const password = req.body.password;
+		const password = req.body.Password;
+
+		// console.log(req.body);
 
 		if (!FirstName || !LastName || !PhoneNumber || !EmailAddress || !password || !FirstName.trim() || !LastName.trim() || !PhoneNumber.trim() || !EmailAddress.trim() || !password.trim()) {
 
 			res.status(400).json({message: 'Invalid Request !'});
+			console.log("Can  not register");
 
 		} else {
+			//console.log(register.registerUser(FirstName, LastName,PhoneNumber, EmailAddress, password));
 
 			register.registerUser(FirstName, LastName,PhoneNumber, EmailAddress, password)
-
 			.then(result => {
+
+				console.log(req.body);
 
 				res.setHeader('Location', '/users/'+EmailAddress);
 				res.status(result.status).json({ message: result.message })
+
 			})
 
-			.catch(err => res.status(err.status).json({ message: err.message }));
+			.catch(err => res.status(err.status).json({ }));
+		
 		}
 	});
 

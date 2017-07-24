@@ -13,24 +13,35 @@ app.use(logger('dev'));
 
 app.use(bodyParser.json());
 
-// Recipient = require('./models/recipient');
-// User = require('./models/user');
-// Card = require('./models/card');
-// Bank = require('./models/bank');
-// Account = require('./models/account');
+const Recipient = require('./models/recipient');
+const User = require('./models/user');
+const Card = require('./models/card');
+const Bank = require('./models/bank');
+const Account = require('./models/account');
 
-//connect to mongoose
-// mongoose.connect('mongodb://localhost/chedapay');
-// var db = mongoose.connection;
+
+mongoose.connect('mongodb://localhost/chedapay');
+
+
+const db = mongoose.connection;
 
 require('./routes')(router);
+app.use('/api/v1', router);
+
+require('./models/recipient');
+require('./models/user');
+require('./models/card');
+require('./models/bank');
+require('./models/account');
+
+
 
 app.get('/', function(req, res){
 	res.send('hello world!');
 });
 
 // Get Recipients
-app.get('/api/recipients', function(req, res){
+app.get('/api/v1/recipients', function(req, res){
 	Recipient.getRecipients(function(err, recipients){
 		if (err){
 			throw err;
@@ -41,7 +52,7 @@ app.get('/api/recipients', function(req, res){
 });
 
 // Post Recipient
-app.post('/api/recipients', function(req, res){
+app.post('/api/v1/recipients', function(req, res){
 	var recipient = req.body;
 	Recipient.addRecipient(recipient, function(err, recipient){
 		if (err){
@@ -97,16 +108,17 @@ app.get('/api/users', function(req, res){
 });
 
 // Post User
-app.post('/api/users', function(req, res){
-	var user = req.body;
-	User.addUser(user, function(err, user){
-		if (err){
-			throw err;
-		}
-		res.json(user);
 
-	});
-});
+// app.post('/api/users', function(req, res){
+// 	var user = req.body;
+// 	User.addUser(user, function(err, user){
+// 		if (err){
+// 			throw err;
+// 		}
+// 		res.json(user);
+
+// 	});
+// });
 
 // Update User
 app.put('/api/users/:_id', function(req, res){
@@ -123,7 +135,7 @@ app.put('/api/users/:_id', function(req, res){
 });
 
 // Get Cards
-app.get('/api/cards', function(req, res){
+app.get('/api/v1/cards', function(req, res){
 	Card.getCards(function(err, cards){
 		if (err){
 			throw err;
@@ -134,7 +146,7 @@ app.get('/api/cards', function(req, res){
 });
 
 // Post Card
-app.post('/api/cards', function(req, res){
+app.post('/api/v1/cards', function(req, res){
 	var card = req.body;
 	Card.addCard(card, function(err, card){
 		if (err){
@@ -172,7 +184,7 @@ app.delete('/api/cards/:_id', function(req, res){
 	});
 });
 // Get Banks
-app.get('/api/banks', function(req, res){
+app.get('/api/v1/banks', function(req, res){
 	Bank.getBanks(function(err, banks){
 		if (err){
 			throw err;
@@ -182,7 +194,7 @@ app.get('/api/banks', function(req, res){
 	});
 });
 // Post Bank
-app.post('/api/banks', function(req, res){
+app.post('/api/v1/banks', function(req, res){
 	var bank = req.body;
 	Bank.addBank(bank, function(err, bank){
 		if (err){
@@ -219,7 +231,7 @@ app.delete('/api/banks/:_id', function(req, res){
 });
 
 // Get Accounts
-app.get('/api/accounts', function(req, res){
+app.get('/api/v1/accounts', function(req, res){
 	Account.getAccounts(function(err, accounts){
 		if (err){
 			throw err;
@@ -230,7 +242,7 @@ app.get('/api/accounts', function(req, res){
 });
 
 // Post Account
-app.post('/api/accounts', function(req, res){
+app.post('/api/v1/accounts', function(req, res){
 	var account = req.body;
 	Account.addAccount(account, function(err, account){
 		if (err){
