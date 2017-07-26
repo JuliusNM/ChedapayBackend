@@ -277,15 +277,15 @@ app.delete('/api/accounts/:_id', function(req, res){
 });
 
 
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+// var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-if (env === "development") {
+// if (env === "development") {
 
-	mongoose.connect('mongodb://localhost/chedapay');
-}
-else{
+// 	mongoose.connect('mongodb://localhost/chedapay');
+// }
+// else{
 
-	mongoose.connect('mongodb://<julius>:<julius>@ds129352.mlab.com:29352/chedapay');
+mongoose.connect('mongodb://<julius>:<julius>@ds129352.mlab.com:29352/chedapay');
 
 }
 app.listen(port);
