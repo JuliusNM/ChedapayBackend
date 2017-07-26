@@ -1,28 +1,17 @@
 var mongoose = require('mongoose');
 
 //Recipients Schema
+const User = require('./user');
 
 var recipientSchema = mongoose.Schema({
-	RecipientAccountNumber:{
-		type: String,
-		required: true
-	},
-	RecipientBank:{
-		type: String,
-		required: true
-	},
-	RecipientFirstName:{
-		type: String,
-		required: true
-	},
-	RecipientLastName:{
-		type: String,
-		required: true
-	},
-	Country:{
-		type: String,
-		required: true
-	}
+
+	RecipientAccountNumber:String,
+	RecipientBank:String,
+	RecipientFirstName:String,
+	RecipientLastName: String,
+	Country: String,
+	UserId: [{type: mongoose.Schema.Types.ObjectId, ref: 'user'}]
+
 });
 
 var Recipient = module.exports = mongoose.model('Recipient', recipientSchema);
