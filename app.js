@@ -285,7 +285,7 @@ app.delete('/api/accounts/:_id', function(req, res){
 // }
 // else{}
 
-mongoose.connect('mongodb://<julius>:<julius>@ds129352.mlab.com:29352/chedapay');
+mongoose.connect('mongodb://julius:julius@ds129352.mlab.com:29352/chedapay');
 
 
 app.listen(port);
