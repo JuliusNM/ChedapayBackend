@@ -21,6 +21,7 @@ const userSchema = mongoose.Schema({
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/chedapay');
+mongoose.connect('mongodb://<julius>:<julius>@ds129352.mlab.com:29352/chedapay');
 module.exports = mongoose.model('user', userSchema);
 
 //Get Users

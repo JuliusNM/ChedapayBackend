@@ -19,11 +19,6 @@ const Card = require('./models/card');
 const Bank = require('./models/bank');
 const Account = require('./models/account');
 
-
-// mongoose.connect('mongodb://localhost/chedapay');
-mongoose.connect('mongodb://<julius>:<julius>@ds129352.mlab.com:29352/chedapay');
-
-
 const db = mongoose.connection;
 
 require('./routes')(router);
@@ -280,5 +275,18 @@ app.delete('/api/accounts/:_id', function(req, res){
 
 	});
 });
-app.listen(3000,"0.0.0.0");
-console.log('Running on port 3000...');
+
+
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+if (env === "development") {
+
+	mongoose.connect('mongodb://localhost/chedapay');
+}
+else{
+
+	mongoose.connect('mongodb://<julius>:<julius>@ds129352.mlab.com:29352/chedapay');
+
+}
+app.listen(port);
+console.log('Running on port' +port+'...');
