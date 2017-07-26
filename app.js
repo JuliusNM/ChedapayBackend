@@ -20,7 +20,8 @@ const Bank = require('./models/bank');
 const Account = require('./models/account');
 
 
-mongoose.connect('mongodb://localhost/chedapay');
+// mongoose.connect('mongodb://localhost/chedapay');
+mongoose.connect('mongodb://<julius>:<julius>@ds129352.mlab.com:29352/chedapay');
 
 
 const db = mongoose.connection;
