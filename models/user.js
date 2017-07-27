@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+relationship = require("mongoose-relationship");
 
 //User Schema
 
@@ -12,6 +13,7 @@ const userSchema = mongoose.Schema({
 	Created_at: String,
 	temp_password	: String,
 	temp_password_time: String	
+	Recipients: [{ type:Schema.ObjectId, ref:"Recipient"}]
 	// CardId: String,
 	// AccountId: String,		
 	// RecipientId: String
