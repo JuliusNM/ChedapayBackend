@@ -10,19 +10,12 @@ var recipientSchema = mongoose.Schema({
 	RecipientFirstName:String,
 	RecipientLastName: String,
 	Country: String,
-	User: { type:Schema.ObjectId, ref:"User", childPath:"Recipients" }
+	UserId: [{ type:Schema.Types.ObjectId, ref:"User"}]
 
 });
 
-recipientSchema.plugin(relationship, { relationshipPathName:'User' });
 
 var Recipient = module.exports = mongoose.model("Recipient", recipientSchema)
-
-var user = new User({});
-user.save();
-var recipient = new Recipient({User:User._id});
-recipient.save() //the parent children property will now contain child's id
-//child.remove() //the parent children property will no longer contain the child's id
 
 //Get Recipients
 
