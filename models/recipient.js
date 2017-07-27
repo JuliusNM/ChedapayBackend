@@ -15,7 +15,43 @@ var recipientSchema = mongoose.Schema({
 });
 
 
-var Recipient = module.exports = mongoose.model("Recipient", recipientSchema)
+const Recipient = module.exports = mongoose.model("Recipient", recipientSchema)
+
+const user = new User({
+	_id: user._id,
+	FirstName : user.FirstName,
+	LastName : user.LastName,
+	PhoneNumber : user.PhoneNumber,
+	EmailAddress : user.EmailAddress
+});
+
+user.save(function (err) {
+  if (err) return handleError(err);
+  
+  const recipient1 = new Recipient({
+    RecipientAccountNumber: recipient.RecipientAccountNumber,
+	RecipientBank: recipient.RecipientBank,
+	RecipientFirstName: recipient.RecipientFirstName,
+	RecipientLastName: recipient.LastName,
+	Country: recipient.Country,
+    UserId: user._id   // assign the _id from the user
+  });
+
+   recipient1.save(function (err) {
+    if (err) return handleError(err);
+    
+  });
+});
+
+Recipient.
+  findOne({ RecipientFirstName: 'Julius'}).
+  populate('UserId').
+  exec(function (err, story) {
+    if (err) return handleError(err);
+    console.log('The user is %s', user.UserId.LastName);
+    
+  });
+
 
 //Get Recipients
 
