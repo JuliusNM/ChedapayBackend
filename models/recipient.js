@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-
+const Schema = mongoose.Schema;
 //Recipients Schema
 const User = require('./user');
 
