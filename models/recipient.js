@@ -29,11 +29,11 @@ user.save(function (err) {
   if (err) return handleError(err);
   
   const recipient1 = new Recipient({
-    RecipientAccountNumber: recipient.RecipientAccountNumber,
-	RecipientBank: recipient.RecipientBank,
-	RecipientFirstName: recipient.RecipientFirstName,
-	RecipientLastName: recipient.LastName,
-	Country: recipient.Country,
+    RecipientAccountNumber: "55511445",
+	RecipientBank: "Faulu Bank",
+	RecipientFirstName: "Margret",
+	RecipientLastName: "King",
+	Country: "Ghana",
     UserId: user._id   // assign the _id from the user
   });
 
@@ -44,7 +44,7 @@ user.save(function (err) {
 });
 
 Recipient.
-  findOne({ RecipientFirstName: 'Julius'}).
+  findOne({ RecipientFirstName: 'Margret'}).
   populate('UserId').
   exec(function (err, story) {
     if (err) return handleError(err);
