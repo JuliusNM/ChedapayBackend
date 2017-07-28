@@ -8,9 +8,13 @@ const router 	   = express.Router();
 const port 	   = process.env.PORT || 3000;
 
 const mongoose = require('mongoose');
+mongoose.connect('mongodb://julius:julius@ds129352.mlab.com:29352/chedapay');
+mongoose.connection.on('error', function(error) {
+	// TODO: Refuse to start the server if we're unable to connect
+	// to the database
+});
 
 app.use(logger('dev'));
-
 app.use(bodyParser.json());
 
 const Recipient = require('./models/recipient');
@@ -19,18 +23,8 @@ const Card = require('./models/card');
 const Bank = require('./models/bank');
 const Account = require('./models/account');
 
-const db = mongoose.connection;
-
 require('./routes')(router);
 app.use('/api/v1', router);
-
-require('./models/recipient');
-require('./models/user');
-require('./models/card');
-require('./models/bank');
-require('./models/account');
-
-
 
 app.get('/', function(req, res){
 	res.send('hello world!');
@@ -50,6 +44,9 @@ app.get('/api/v1/recipients', function(req, res){
 // Post Recipient
 app.post('/api/v1/recipients', function(req, res){
 	var recipient = req.body;
+	// let recipient = Recipient.create(recipient, function(err, data) {
+		
+	// });
 	Recipient.addRecipient(recipient, function(err, recipient){
 		if (err){
 			throw err;
@@ -285,8 +282,7 @@ app.delete('/api/accounts/:_id', function(req, res){
 // }
 // else{}
 
-mongoose.connect('mongodb://julius:julius@ds129352.mlab.com:29352/chedapay');
-
+// mongoose.connect('mongodb://julius:julius@ds129352.mlab.com:29352/chedapay');
 
 app.listen(port);
-console.log('Running on port' +port+'...');
+console.log('Running on port', + port + '...');

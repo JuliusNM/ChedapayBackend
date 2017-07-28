@@ -5,52 +5,51 @@ const User = require('./user');
 
 var recipientSchema = mongoose.Schema({
 
-	RecipientAccountNumber:String,
-	RecipientBank:String,
-	RecipientFirstName:String,
-	RecipientLastName: String,
-	Country: String,
-	UserId: [{ type:Schema.Types.ObjectId, ref:"User"}]
+	accountNumber:String,
+	bank:String,
+	firstName:String,
+	lastName: String,
+	country: String,
+	userId: [{ type:Schema.Types.ObjectId, ref:"User"}]
 
 });
 
 
 const Recipient = module.exports = mongoose.model("Recipient", recipientSchema)
 
-const user = new User({
-	_id: user._id,
-	FirstName : "Julius",
-	LastName : "Ngigi",
-	PhoneNumber : "+4557855222",
-	EmailAddress : "juliusngigim@gmail.com"
-});
+// const user = new User({
+// 	FirstName : "Julius",
+// 	LastName : "Ngigi",
+// 	PhoneNumber : "+4557855222",
+// 	EmailAddress : "juliusngigim@gmail.com"
+// });
 
-user.save(function (err) {
-  if (err) return handleError(err);
+// user.save(function (err) {
+//   if (err) return handleError(err);
   
-  const recipient1 = new Recipient({
-    RecipientAccountNumber: "55511445",
-	RecipientBank: "Faulu Bank",
-	RecipientFirstName: "Margret",
-	RecipientLastName: "King",
-	Country: "Ghana",
-    UserId: user._id   // assign the _id from the user
-  });
+//   const recipient1 = new Recipient({
+//     RecipientAccountNumber: "55511445",
+// 	RecipientBank: "Faulu Bank",
+// 	RecipientFirstName: "Margret",
+// 	RecipientLastName: "King",
+// 	Country: "Ghana",
+//     UserId: user._id  
+//   });
 
-   recipient1.save(function (err) {
-    if (err) return handleError(err);
+//    recipient1.save(function (err) {
+//     if (err) return handleError(err);
+//     console.log(recipient1);
     
-  });
-});
+//   });
+// });
 
-Recipient.
-  findOne({ RecipientFirstName: 'Margret'}).
-  populate('UserId').
-  exec(function (err, story) {
-    if (err) return handleError(err);
-    console.log('The user is %s', user.UserId.LastName);
-    
-  });
+// Recipient.
+//   findOne({ RecipientFirstName: 'Margret'}).
+//   populate('UserId').
+//   exec(function (err, recipient) {
+//     console.log('The user is %s', user.);
+
+//   });
 
 
 //Get Recipients

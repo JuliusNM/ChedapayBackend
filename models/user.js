@@ -3,25 +3,22 @@ const mongoose = require('mongoose');
 //User Schema
 
 const userSchema = mongoose.Schema({
-	
 	FirstName: String,
 	LastName: String,
-	PhoneNumber: String,	
+	PhoneNumber: String,
 	EmailAddress: String,
 	Password:String,
 	Created_at: String,
 	temp_password	: String,
-	temp_password_time: String	
-	// CardId: String,
-	// AccountId: String,		
-	// RecipientId: String
-	
+	temp_password_time: String,
+	RecipientList: [],
+	BankList: [],
+	CardList: [],
 });
 
 
 mongoose.Promise = global.Promise;
-// mongoose.connect('mongodb://localhost/chedapay');
-mongoose.connect('mongodb://julius:julius@ds129352.mlab.com:29352/chedapay');
+// mongoose.connect('mongodb://julius:julius@ds129352.mlab.com:29352/chedapay');
 
 const userModel =  mongoose.model('user', userSchema);
 module.exports = userModel;
