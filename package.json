@@ -1,29 +1,26 @@
 {
   "name": "chedapay",
   "version": "1.0.0",
-  "description": "Across Africa Payments",
+  "description": "",
   "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app"
-    
-  },
-  "dependencies": {   
+  "dependencies": {
+    "express": "^4.15.3",
+    "gravatar": "^1.6.0",
     "mongoose": "^4.10.8",
+    "mongoose-relationship": "^0.1.5",
     "nodemailer":"4.0.1 ",
     "basic-auth": "^1.0.4",
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.2",
-    "express": "^4.14.0",
     "jsonwebtoken": "^7.1.9",
     "morgan": "^1.7.0",
-    "randomstring": "^1.1.5",
+    "randomstring": "^1.1.5"
   },
-  "author": "Julius Ngigi",
-  "license": "ISC",
-
-  "repository": {
-    "type": "git",
-    "url": "https://git.heroku.com/glacial-fortress-32716.git"
-  }
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "julius Ngigi",
+  "license": "ISC"
 }
