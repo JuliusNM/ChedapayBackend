@@ -19,10 +19,10 @@ const Recipient = module.exports = mongoose.model("Recipient", recipientSchema)
 
 const user = new User({
 	_id: user._id,
-	FirstName : user.FirstName,
-	LastName : user.LastName,
-	PhoneNumber : user.PhoneNumber,
-	EmailAddress : user.EmailAddress
+	FirstName : "Julius",
+	LastName : "Ngigi",
+	PhoneNumber : "+4557855222",
+	EmailAddress : "juliusngigim@gmail.com"
 });
 
 user.save(function (err) {
