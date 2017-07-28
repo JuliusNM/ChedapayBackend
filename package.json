@@ -8,8 +8,7 @@
     "start": "node app",
     
   },
-  "dependencies": {
-     
+  "dependencies": {   
     "mongoose": "^4.10.8",
     "nodemailer":"4.0.1 ",
     "basic-auth": "^1.0.4",
@@ -18,7 +17,7 @@
     "express": "^4.14.0",
     "jsonwebtoken": "^7.1.9",
     "morgan": "^1.7.0",
-    "randomstring": "^1.1.5"
+    "randomstring": "^1.1.5",
   },
   "author": "Julius Ngigi",
   "license": "ISC"
