@@ -20,5 +20,10 @@
     "randomstring": "^1.1.5",
   },
   "author": "Julius Ngigi",
-  "license": "ISC"
+  "license": "ISC",
+
+  "repository": {
+    "type": "git",
+    "url": "https://git.heroku.com/glacial-fortress-32716.git"
+  }
 }
