@@ -1,10 +1,11 @@
 var mongoose = require('mongoose');
 
 var cardSchema = mongoose.Schema({
-	CardNumber: Number
-	CVV: Number,
-	ExpiryYear: Number,
-	ExpiryMonth: Number,
+
+	CardNumber:String,
+	CVV:String,
+	ExpiryYear:String,
+	ExpiryMonth:String,
 	CardIssuer:String
 	
 });
