@@ -10,6 +10,7 @@ var recipientSchema = mongoose.Schema({
 	firstName:String,
 	lastName: String,
 	country: String,
+	//phoneNumber: String,
 	userId: [{ type:Schema.Types.ObjectId, ref:"User"}]
 
 });
