@@ -51,7 +51,7 @@ module.exports.updateCard = function(id, card, options, callback){
 	}
 	Card.findOneAndUpdate(query, update, options, callback);
 }
-//Delete Recipient
+//Delete Card
 module.exports.findOneAndDelete = function(id, callback){
 
 	var query = { _id: id };
