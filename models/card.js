@@ -1,28 +1,11 @@
 var mongoose = require('mongoose');
 
-//User Schema
-
 var cardSchema = mongoose.Schema({
-	CardNumber:{
-		type: Number,
-		required: true
-	},
-	CVV:{
-		type: Number,
-		required: true
-	},
-	ExpiryYear:{
-		type: Number,
-		required: true
-	},
-	ExpiryMonth:{
-		type: Number,
-		required: true
-	},
-	CardIssuer:{
-		type: String,
-		required: true
-	}
+	CardNumber: Number
+	CVV: Number,
+	ExpiryYear: Number,
+	ExpiryMonth: Number,
+	CardIssuer:String
 	
 });
 
